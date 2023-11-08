@@ -13,20 +13,26 @@
 // Deve ser possível buscar um usuário pelo id
 // Deve ser possível buscar um usuário pelo email
 // Deve ser possível criar um post relacionado a um usuário, passando: content
+
 const crypto = require('crypto')
 
 class User {
-    id = crypto.randomUUID()
-    nickname
-    email
-    password
-    posts = []
-    createdAt = new Date()
-
     constructor(nickname, email, password) {
         this.nickname = nickname
         this.email = email
-        this.password = password        
+        this.password = password      
+        
+        this.whenIsCreated()
+    }
+
+    whenIsCreated(){
+        this.id = crypto.randomUUID()
+        this.posts = []
+        this.createdAt = new Date()
+    }
+
+    addPost(post) {
+        this.posts.push(post)
     }
 }
 
@@ -62,10 +68,14 @@ class Repository {
         Object.assign(user, data)
         return user
     }
-    createPost(data) {
-        const post = new Post(data.content)
-        this.db.push(post)
-        return post
+    createPost(userId, content) {
+        const userFoundById = this.findById(userId);
+        if (!userFoundById) {
+            console.log("User not found with ID:", userId);
+        }
+        const post = new Post(content);
+        userFoundById.addPost(post);
+        return post;
     }
 }
 
@@ -83,7 +93,7 @@ const userData = {
   console.log("New user created:", newUser);
   
   const postContent = "This is a sample post.";
-  const newPost = repository.createPost({ content: postContent }, newUser.id);
+  const newPost = repository.createPost(newUser.id, postContent);
   console.log("New post created:", newPost);
   
   const updatedUserData = {
