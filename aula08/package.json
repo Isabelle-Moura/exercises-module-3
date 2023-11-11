@@ -1,0 +1,12 @@
+{
+  "name": "aula08",
+  "version": "1.0.0",
+  "description": "Vamos adicionar uma nova entidade ao nosso sistema de gerenciamento de filmes: Atuação.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
