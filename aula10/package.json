@@ -1,0 +1,15 @@
+{
+  "name": "aula10",
+  "version": "1.0.0",
+  "description": "Em um contexto de desenvolvimento de software, uma entidade no backend geralmente\r se refere a um objeto ou conceito que representa algo do mundo real. Essas entidades\r são usadas para modelar e armazenar dados no sistema.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.2.0"
+  }
+}
