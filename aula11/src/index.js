@@ -17,5 +17,5 @@ const service = new ProductService(repository);
   console.log(electronicsProducts);
 
   await service.deleteProduct(product._id);
-  client.close()
+  await client.close()
 })
