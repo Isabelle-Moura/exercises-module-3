@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 class ProductRepository {
     constructor(collection) {
         this.collection = collection
@@ -15,11 +17,11 @@ class ProductRepository {
       }
     
       async updateProduct(id, newProduct) {
-        await this.collection.updateOne({ _id: ObjectID(id) }, { $set: newProduct });
+        await this.collection.updateOne({ _id: new ObjectId(id) }, { $set: newProduct });
       }
     
       async deleteProduct(id) {
-        await this.collection.deleteOne({ _id: ObjectID(id) });
+        await this.collection.deleteOne({ _id: new ObjectId(id) });
       }
     }
 

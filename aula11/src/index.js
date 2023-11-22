@@ -18,4 +18,4 @@ const service = new ProductService(repository);
 
   await service.deleteProduct(product._id);
   await client.close()
-})
+})()
