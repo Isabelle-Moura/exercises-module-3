@@ -5,7 +5,7 @@
 Em um contexto de desenvolvimento de software, uma entidade no backend geralmente se refere a um objeto ou conceito que representa algo do mundo real. Essas entidades são usadas para modelar e armazenar dados no sistema.
 
 ### Car
-
+ 
 -  model (string)
 -  releasedAt (number)
 -  brand (string)
