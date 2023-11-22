@@ -16,13 +16,19 @@ class BookRepository {
     findAllByAuthor(author) {
         return this.collection.find({ author }).toArray()
     }
+    findAllByTitle(title) {
+        return this.collection.find({ title }).toArray()
+    }
 
     findById(id) {
         return this.collection.findOne({ _id: new ObjectId(id) })
     }
 
-    async update(id, book) {
-        await this.collection.updateOne({ _id: new ObjectId(id) }, { $set: book })
+    async update(id, updatedBook) {
+        await this.collection.updateOne(
+            { _id: new ObjectId(id) },
+            { $set: updatedBook }
+        );
     }
 
     async delete(id) {

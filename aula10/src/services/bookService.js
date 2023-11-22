@@ -17,14 +17,18 @@ class BookService {
     async findAllByAuthor (author) {
         return this.repository.findAllByAuthor(author)
     }
+
+    async findByTitle(title) {
+        return this.repository.findAllByTitle(title);
+      }
     
-    async update (id, book) {
-        const bookFounded = await this.repository.findById(id)
+    async update(id, updatedBook) {
+        const bookFounded = await this.repository.findById(id);
         if (!bookFounded) {
-            throw new Error('Book not found')
+          throw new Error('Book not found');
         }
-        await this.repository.update(id, book)
-    }
+        await this.repository.update(id, updatedBook);
+      }
     
     async delete (id) {
         const bookFounded = await this.repository.findById(id)

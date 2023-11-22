@@ -6,10 +6,17 @@ const repository = new BookRepository(database)
 const service = new BookService(repository)
 
 ;(async () => {
-    await service.create({title: 'Book 1', description: 'Description 1', releasedAt: 2023, author: 'Isa', category: 'Fiction'})   
+    await service.create('Book 1', 'Description 1', 2023, 'Isa', 'Fiction');   
     console.log(await service.findAll()) 
     console.log(await service.findAllByAuthor('Isa'))
-    console.log(await service.findByTitle('Book 1'))
-    console.log(await service.update(1, {title: 'New Book 1', description: 'New Description 1', releasedAt: 2023, author: 'Isa', category: 'Fiction'}))
+    console.log(await service.findByTitle('Book 1'));
+    console.log(await service.update('655d494cac7c19681b938865', {
+        title: 'Novo Livro 1',
+        description: 'Nova Descrição 1',
+        releasedAt: 2023,
+        author: 'Isa',
+        category: 'Ficção'
+    }));
+    console.log(await service.findAll()) 
     client.close()
 })()
