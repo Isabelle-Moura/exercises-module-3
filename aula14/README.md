@@ -1,18 +1,22 @@
-# Sistema de Controle Financeiro
+# Sistema de Concessionária
 
-## Transaction
+## Entidade
 
-value -> number
-description -> string
-kind -> 'withdraw' or 'deposit'
-createdAt -> Date
-canceledAt -> Date
+### Carro
+
+-  Marca
+-  Modelo
+-  Placa
+-  Cor
+-  É usado?
+-  Ano
+-  Vendido
 
 ## Funcionalidades
 
--  Deve ser capaz de fazer uma transacao, passando: value, description and kind.
--  Deve ser possivel buscar todas as transacoes
--  Deve ser possivel buscar apenas as transacoes do tipo "withdraw"
--  Deve ser possivel buscar apenas as transacoes do tipo "deposit"
--  Deve ser possivel buscar uma transacao pelo id
--  Deve ser possivel cancelar uma transacao buscando pelo id e atualizando o canceledAt
+-  Deve ser possível criar um carro no sistema, passando as informacoes: marca,
+   modelo, placa, cor, é usado, ano;
+-  Deve ser possível atualizar um carro no sistema, atualizando para vendido
+-  Deve ser possível buscar um carro pela placa
+-  Deve ser possível buscar todos os carros
+-  Deve ser possível buscar os carros já vendidos/nao vendidos
