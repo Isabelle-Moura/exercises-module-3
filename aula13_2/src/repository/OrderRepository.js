@@ -18,6 +18,6 @@ export default class OrderRepository {
     }
 
     updateOrderStatus(id){
-        this.collection.updateOne( { _id: new ObjectId(id) }, {$set: { wasDelivered: true } } )
+        return this.collection.updateOne( { _id: new ObjectId(id) }, {$set: { wasDelivered: true } } )
     }
 }
