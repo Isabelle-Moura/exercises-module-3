@@ -1,25 +1,45 @@
-export default class PostsService {
-    constructor(repository) {
-        this.repository = repository
-    }
+export class PostsService {
+   constructor(repository) {
+      this.repository = repository;
+   }
 
-    createPost(post) {
-        return this.repository.createPost(post)
-    }
+   async createPost(post) {
+      try {
+         return await this.repository.createPost(post);
+      } catch (error) {
+         console.log("There was an error in createPost at service", error);
+      }
+   }
 
-    likeAnPost() {
-        return this.repository.likeAnPost()
-    }
+   async likeAnPost(content) {
+      try {
+         return await this.repository.likeAnPost(content);
+      } catch (error) {
+         console.log("There was an error in likeAnPost at service", error);
+      }
+   }
 
-    findPostsByAuthor(author) {
-        return this.repository.findPostsByAuthor(author)
-    }
+   async findPostsByAuthor(author) {
+      try {
+         return await this.repository.findPostsByAuthor(author);
+      } catch (error) {
+         console.log("There was an error in findPostsByAuthor at service", error);
+      }
+   }
 
-    getPosts() {
-        return this.repository.getPosts()
-    }
+   async getPosts() {
+      try {
+         return await this.repository.getPosts();
+      } catch (error) {
+         console.log("There was an error in getPosts at service", error);
+      }
+   }
 
-    deletePost(id) {
-        return this.repository.deletePost(id)
-    }
+   async deletePost(id) {
+      try {
+         return await this.repository.deletePost(id);
+      } catch (error) {
+         console.log(" There was an error in deletePost at service", error);
+      }
+   }
 }

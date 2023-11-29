@@ -6,30 +6,50 @@
     - Deletar um post
 */
 
-import { ObjectId } from 'mongodb'
+import { ObjectId } from "mongodb";
 
-export default class PostsRepository {
-    constructor(collection){
-        this.collection = collection
-    }
+export class PostsRepository {
+   constructor(collection) {
+      this.collection = collection;
+   }
 
-    createPost(post){
-        return this.collection.insertOne(post)        
-    }
+   async createPost(post) {
+      try {
+         return await this.collection.insertOne(post);
+      } catch (error) {
+         console.log("There was an error in createPost at repository", error);
+      }
+   }
 
-    likeAnPost(){
-        return this.collection.updateOne({}, {$inc: {likes: 1}})
-    }
+   async likeAnPost(content) {
+      try {
+         return await this.collection.updateOne({ content: content }, { $inc: { likes: 1 } });
+      } catch (error) {
+         console.log("There was an error in likeAnPost at repository", error);
+      }
+   }
 
-    findPostsByAuthor(author){
-        return this.collection.find({author}).toArray()
-    }
+   async findPostsByAuthor(author) {
+      try {
+         return await this.collection.find({ author }).toArray();
+      } catch (error) {
+         console.log("There was an error in findPostsByAuthor at repository", error);
+      }
+   }
 
-    getPosts(){
-        return this.collection.find({}).toArray()
-    }
+   async getPosts() {
+      try {
+         return await this.collection.find({}).toArray();
+      } catch (error) {
+         console.log("There was an error in getPosts at repository",error);
+      }
+   }
 
-    deletePost(id){
-        return this.collection.deleteOne({_id: new ObjectId(id)})
-    }
+   async deletePost(id) {
+      try {
+         return await this.collection.deleteOne({ _id: new ObjectId(id) });
+      } catch (error) {
+         console.log("There was an error in deletePost at repository", error);
+      }
+   }
 }
