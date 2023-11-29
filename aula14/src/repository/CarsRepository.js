@@ -7,33 +7,57 @@
   - Buscar carros não vendidos
 */
 
-import { ObjectId } from 'mongodb'
+import { ObjectId } from "mongodb";
 
 export default class CarsRepository {
-    constructor(collection){
-        this.collection = collection
-    }
+   constructor(collection) {
+      this.collection = collection;
+   }
 
-    createCar(car){
-        return this.collection.insertOne(car)        
-    }
+   async createCar(car) {
+      try {
+         return await this.collection.insertOne(car);
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
-   updateCarStatus(car){
-        return this.collection.updateOne({plate: new ObjectId(car._id)}, {$set: {isSold: car.isSold}})                
-    }
-    
-   getCarByPlate(plate){
-        return this.collection.findOne({plate})
-    }
+   async updateCarStatus(car) {
+      try {
+         return await this.collection.updateOne({ plate: car.plate }, { $set: { isUsed: car.isUsed } });
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
-   getCars(){
-        return this.collection.find({}).toArray()
-    }
+   async getCarByPlate(plate) {
+      try {
+         return await this.collection.findOne({ plate });
+      } catch (error) {
+         console.log(error);
+      }
+   }
 
-   getCarsSold(){
-        return this.collection.find({isSold: true}).toArray()
-    }
-   getCarsNotSold(){
-        return this.collection.find({isSold: false}).toArray()
-    }
+   async getCars() {
+      try {
+         return await this.collection.find({}).toArray();
+      } catch (error) {
+         console.log(error);
+      }
+   }
+
+   async getCarsSold() {
+      try {
+         return await this.collection.find({ isSold: true }).toArray();
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   async getCarsNotSold() {
+      try {
+         return await this.collection.find({ isSold: false }).toArray();
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }
