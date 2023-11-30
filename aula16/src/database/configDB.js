@@ -2,25 +2,18 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: '../../.env' });
 
-console.log(process.env.MONGO_USER);
-console.log(process.env.MONGO_PASSWORD);
-
 import { MongoClient } from 'mongodb'
 
-// Get environment variables
-const mongoUser = process.env.MONGO_USER;
-const mongoPassword = process.env.MONGO_PASSWORD;
-
-// Create the connection string using environment variables
-const connectionString = `mongodb+srv://${mongoUser}:${mongoPassword}@isadatabase.jgwrkwu.mongodb.net/`;
+// Get environment variable
+const url = process.env.DATABASE_URL;
 
 // Create an instance of the MongoDB client
-const client = new MongoClient(connectionString);
+const client = new MongoClient(url);
 
 // Connect to the database
 client.connect()
   .then(() => {
-    console.log('Connected to the database');
+    console.log('Connected to the database!');
   })
   .catch(err => {
     console.error('Error connecting to the database', err);
