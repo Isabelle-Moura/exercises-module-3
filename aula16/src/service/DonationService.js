@@ -12,9 +12,9 @@ export class DonationService {
         }
     }
 
-    async updateDonationStatus(donation){
+    async updateDonationStatus(id){
         try {
-            const result = await this.repository.updateDonationStatus(donation)
+            const result = await this.repository.updateDonationStatus(id)
             return result
         } catch (error) {
             console.log("There was an error in updateDonation at service", error)
@@ -42,6 +42,9 @@ export class DonationService {
     async getDonationById(id){
         try {
             const result = await this.repository.getDonationById(id)
+            if (!result) {
+                return {error: true, message: 'No donations at this id was found.'}
+            }
             return result
         } catch (error) {
             console.log("There was an error in getDonationById at service", error)

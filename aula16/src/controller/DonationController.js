@@ -1,4 +1,4 @@
-import { Donation } from "../entities/Donation.js"
+import { Item } from "../entities/Item.js"
 
 export class DonationController{
     constructor(service){
@@ -8,7 +8,7 @@ export class DonationController{
     async createDonation(req, res){
         try {
             const { body } = req
-            const newDonation = new Donation(body.title, body.description, body.city, body.location, body.phoneNumber)
+            const newDonation = new Item(body.title, body.description, body.city, body.location, body.phoneNumber)
             const result = await this.service.createDonation(newDonation)
             res.status(201).json(result)
         } catch (error) {
@@ -18,8 +18,8 @@ export class DonationController{
 
     async updateDonationStatus(req, res){
         try {
-            const { body } = req
-            const result = await this.service.updateDonationStatus(body)
+            const { id } = req.params
+            const result = await this.service.updateDonationStatus(id)
             res.status(200).json(result)
         } catch (error) {
             console.log("There was an error in updateDonation at controller", error)

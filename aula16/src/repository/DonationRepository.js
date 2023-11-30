@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb";
+import { ObjectId } from "mongodb"
 
 export class DonationRepository{
     constructor(db){
@@ -14,9 +14,9 @@ export class DonationRepository{
         }
     }
 
-    async updateDonationStatus(donation){
+    async updateDonationStatus(id){
         try {
-            const result = await this.db.updateOne({_id: donation._id}, {isDonated: true})
+            const result = await this.db.updateOne({_id: new ObjectId(id)}, {isDonated: true})
             return result
         } catch (error) {
             console.log("There was an error in updateDonation at repository", error)
@@ -42,7 +42,7 @@ export class DonationRepository{
 
     async getDonationById(id){
         try {
-            const result = await this.db.findOne({_id: id})
+            const result = await this.db.find({_id: new ObjectId(id)})
             return result
         } catch (error) {
             console.log("There was an error in getDonationById at repository", error)
