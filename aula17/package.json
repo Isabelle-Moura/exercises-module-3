@@ -1,0 +1,20 @@
+{
+  "name": "aula17",
+  "version": "1.0.0",
+  "description": "-  fullname: string\r -  title: string\r -  bio: string\r -  currentOccupation: string\r -  education: string\r -  certifications: string\r -  status: \"open to work\" | \"closed\" | \"hiring\"\r -  createdAt: date\r -  deletedAt: date | null",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "tsx": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.1"
+  }
+}
